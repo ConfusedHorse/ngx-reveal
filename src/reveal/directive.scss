@@ -1,0 +1,21 @@
+@use "../styles/variables";
+
+[reveal] {
+  mask-position: var(--mask-position);
+  mask-size: var(--mask-size, 150px 150px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--reveal-color, #888);
+
+    mask-image: radial-gradient(circle closest-side, #FFF, transparent);
+    mask-origin: border-box;
+    mask-repeat: no-repeat;
+    mask-position: inherit;
+    mask-size: inherit;
+
+    transition: background-color variables.$common-transition;
+  }
+}

@@ -1,0 +1,33 @@
+@use "../../styles/variables";
+@use "../directive";
+
+:host {
+  $thickness: #{var(--border-thickness, '2px')};
+
+  display: inline-block;
+  position: relative;
+  padding: $thickness;
+
+  border: $thickness solid black;
+
+  > [reveal] {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    margin: calc(-1 * #{$thickness});
+    $thickness-offset: calc(100% - #{$thickness});
+
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      #{$thickness} 100%,
+      #{$thickness} #{$thickness},
+      #{$thickness-offset} #{$thickness},
+      #{$thickness-offset} #{$thickness-offset},
+      #{$thickness} #{$thickness-offset},
+      #{$thickness} 100%,
+      100% 100%,
+      100% 0%
+    );
+  }
+}
