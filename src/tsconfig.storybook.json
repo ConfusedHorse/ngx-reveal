@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "declarationMap": false,
+    "inlineSources": true,
+    "types": []
+  },
+  "include": [
+    "../.storybook/*",
+    "**/*"
+  ],
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
+  }
+}

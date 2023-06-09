@@ -7,7 +7,6 @@
       "projectType": "library",
       "root": "projects/ngx-reveal",
       "sourceRoot": "projects/ngx-reveal/src",
-      "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -23,15 +22,49 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        }
+      }
+    },
+    "storybook": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "base": {
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "tsConfig": "projects/ngx-reveal/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "outputPath": "<not-used>",
+            "index": "<not-used>",
+            "main": "<not-used>",
+            "baseHref": ".",
+            "tsConfig": "<not-used>",
+            "budgets": [],
+            "styles": [],
+            "scripts": [],
+            "aot": true,
+            "vendorChunk": false,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true
+          },
+          "defaultConfiguration": ""
+        },
+        "start": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "tsConfig": "src/tsconfig.storybook.json",
+            "host": "127.0.0.1",
+            "port": 4200,
+            "compodoc": false
+          }
+        },
+        "build": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "tsConfig": "src/tsconfig.storybook.json",
+            "compodoc": false
           }
         }
       }
